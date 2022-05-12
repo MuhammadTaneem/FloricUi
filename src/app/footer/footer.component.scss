@@ -1,0 +1,19 @@
+
+.header{
+    background-color: rgb(5, 5, 7);
+    color: white;
+}
+
+// @media screen and (min-height : ) {
+//     div {
+//       background-color: lightgreen;
+//     }
+//   }
+
+
+c-container{
+    // position:absolute;
+    position: sticky;
+    // bottom: 0;
+    top: 100%;
+}

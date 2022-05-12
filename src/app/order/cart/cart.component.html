@@ -1,0 +1,88 @@
+
+
+
+  <c-container id="cont"  class="mt-5">
+    <c-card>
+      <c-card-header>Your cart</c-card-header>
+      <ul cListGroup [flush]="false">
+        <li cListGroupItem>
+          <c-row>
+             <!-- name  -->
+            <c-col xs="3" sm="2">
+              <img cCardImg="top" src="./assets/cat.png">
+            </c-col>
+            <!-- details  -->
+            <c-col>
+              <p cCardText>
+                Some quick example <strong>text</strong> to build on the card title and make up the bulk of the card's content.
+              </p>
+            </c-col>
+  
+            <!-- price  -->
+  
+            <c-col  md="1" xs="2">
+  
+              <p>{{subprice}}$</p>
+  
+            </c-col>
+            <!-- quantity  -->
+            <c-col xs="1">
+              <c-row>
+                <button cButton  color="link" variant="outline" [routerLink]="['/order',]" (click)="incriment(1)"  >
+                  <fa-icon [icon]="plush"></fa-icon>
+    
+                </button>
+                <button cButton  color="link" variant="outline"  >
+      
+                  <p>{{quantity}}</p>
+          
+                </button>
+                <button cButton  color="link" variant="outline" [routerLink]="['/order',]" (click)="decriment(1)" >
+      
+                  <fa-icon [icon]="minus"></fa-icon>
+                </button>
+              </c-row> 
+            </c-col>
+          </c-row>
+        </li>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+      </ul>
+  
+      <!-- <c-card-header>Total 1256$</c-card-header> -->
+      <ul cListGroup [flush]="false" class="align-self-end">
+  
+  
+    
+  
+        
+        <li cListGroupItem class="align-self-end">
+  
+          <h5>Total 1000$</h5>
+          
+  
+        </li>
+        <!-- <li class="align-self-end mt-5">
+          <button cButton color="success">Bye now</button>
+        </li> -->
+
+
+      
+      
+      </ul>
+  
+    </c-card> 
+
+  </c-container>

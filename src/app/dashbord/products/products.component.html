@@ -1,0 +1,22 @@
+<app-category></app-category>
+
+<c-container class="mt-5">
+    <div class="text-center">
+        <h2>Recomended Products</h2>
+        <p>Check & Get Your Desired Product !</p>
+    </div>
+    <c-row >
+        <c-col *ngFor="let product of products" class="mt-5" [routerLink]="['/dashbord','product-details']">
+            <c-card class="mb-3">
+              <img cCardImg="top" src="./assets/cat.png">
+              <c-card-body>
+                <h5 cCardTitle>{{product.name}}</h5>
+                <p cCardText class="text-danger fw-semibold">
+                    {{product.price}}$
+                </p>
+           
+              </c-card-body>
+            </c-card>
+          </c-col>
+    </c-row>
+</c-container>

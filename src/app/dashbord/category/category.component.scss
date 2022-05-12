@@ -1,0 +1,16 @@
+
+c-col{
+    max-width: 10rem;
+}
+
+
+@media screen and (min-width: 720px) {
+  c-container {
+      max-width: 60%;
+    }
+  } 
+
+img{
+  max-width: 100%;
+  max-height: 80%;
+}
