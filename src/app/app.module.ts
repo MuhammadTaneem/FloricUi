@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import {FontasModule}from './fontawsome/fontawsome.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgImageSliderModule } from 'ng-image-slider';
 import {
   PERFECT_SCROLLBAR_CONFIG,
   PerfectScrollbarConfigInterface,
@@ -68,6 +69,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FontasModule,
     OrderModule,
     HttpClientModule,
+    NgImageSliderModule,
+
   ],
   providers: [
     {

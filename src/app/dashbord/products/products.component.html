@@ -6,9 +6,9 @@
         <p>Check & Get Your Desired Product !</p>
     </div>
     <c-row >
-        <c-col *ngFor="let product of products" class="mt-5" [routerLink]="['/dashbord','product-details']">
+        <c-col *ngFor="let product of products" class="mt-5" [routerLink]="['/dashbord','productdetails','{{product.id}}']">
             <c-card class="mb-3">
-              <img cCardImg="top" src="./assets/cat.png">
+              <img cCardImg="top" [src]="product.product_img1">
               <c-card-body>
                 <h5 cCardTitle>{{product.name}}</h5>
                 <p cCardText class="text-danger fw-semibold">

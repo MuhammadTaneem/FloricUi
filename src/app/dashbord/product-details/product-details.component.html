@@ -1,1 +1,46 @@
-<p>product-details works!</p>
+
+<!-- 
+<div style="width: 840px; height: 500px; text-align:center;margin:0; padding:0;">
+    
+  </div> -->
+
+
+  <c-container>
+      <c-row>
+          <c-col class="mt-5 p-0 align-items-start" md="5">
+            <ng-image-slider #nav
+            [images]="imageObject"
+            [infinite]="false"
+            [autoSlide]="1"
+            [imageSize]="{width: '100%', height: '50%'}"
+            slideImage="1"></ng-image-slider>
+
+          </c-col>
+          <c-col class="m-5 p-0 align-items-start" md="5">
+
+            <div class="m-5">
+                <h3 class="">name of product</h3>
+                <p>Brand: wxtsy</p>
+                <p>Model: safdsafdsa</p>
+                <P>Color: balck</P>
+
+                <button cButton color="success" class="avility" size="">Availabe</button>
+
+                <p class="price mt-5 ">200$</p>
+                
+            </div>
+
+            <div class="btn m-5">
+                <button cButton color="primary" size="lg">Primary</button>
+            <button cButton color="success" class="ms-5" size="lg">Success</button>
+
+            </div>
+
+            
+
+            
+            
+            
+          </c-col>
+      </c-row>
+  </c-container>

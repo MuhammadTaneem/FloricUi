@@ -1,3 +1,4 @@
+import { DashbordResolver } from './dashbord.resolver';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -7,7 +8,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CoreuiModule } from '../coreui/coreui.module';
 import { DashbordService } from './dashbord.service';
-
+import { NgImageSliderModule } from 'ng-image-slider';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { DashbordService } from './dashbord.service';
   imports: [
     CommonModule,
     DashbordRoutingModule,
-    CoreuiModule
+    CoreuiModule,
+    NgImageSliderModule,
+    
   ],
   exports : [
     CommonModule,
@@ -26,6 +29,8 @@ import { DashbordService } from './dashbord.service';
   ],
   providers:[
     // DashbordService,
+    DashbordService,
+    DashbordResolver,
   ]
 })
 export class DashbordModule { }

@@ -1,3 +1,4 @@
+import { DashbordResolver } from './dashbord.resolver';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductsComponent } from './products/products.component';
 import { CategoryComponent } from './category/category.component';
@@ -18,9 +19,12 @@ const routes: Routes = [
   {
     path: 'products',
     component: ProductsComponent,
+      resolve: {
+      data: DashbordResolver,
+    },
   },
   {
-    path: 'product-details',
+    path: 'productdetails/:id',
     component: ProductDetailsComponent
   },
 ];
