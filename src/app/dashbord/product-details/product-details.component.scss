@@ -8,3 +8,36 @@
 //     background-color: rgb(83, 204, 83);
 //     padding: 1rem;
 // }
+
+.mrw{
+    font-weight: 900;
+    font-size: 150%;
+}
+
+.pas{
+    padding-left: 2rem;
+}
+
+
+
+.star {
+    font-size: 1.5rem;
+    color: #b0c4de;
+  }
+.filled {
+    color: #11ff6c;
+  }
+.bad {
+    color: #deb0b0;
+  }
+.filled.bad {
+    color: #ff1e1e;
+  }
+
+  ngb-rating{
+      margin-top: -2rem;
+  }
+.ratingbox{
+    margin-top: 1rem;
+    border-top: 0;
+}

@@ -4,7 +4,7 @@ export interface Category {
     cat_img: string;
   }
 
-  export interface Product {
+export interface Product {
     id: number;
     name : string;
     description: string;
@@ -15,8 +15,21 @@ export interface Category {
     model:string;
     price: number;
     size:string,
-    product_img: string;
+    product_img1: string;
+    product_img2: string;
+    product_img3: string;
+    product_img4: string;
     author: number;
     product_category: number;
 
   }
+
+export interface Ratting {
+    id: number;
+    star: number;
+    comment: string;
+    name: string;
+    author: number;
+    product: number;
+  }
+

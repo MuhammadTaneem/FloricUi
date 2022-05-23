@@ -9,6 +9,10 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { CoreuiModule } from '../coreui/coreui.module';
 import { DashbordService } from './dashbord.service';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { FontasModule } from '../fontawsome/fontawsome.module';
+import { NgxStarRatingModule } from 'ngx-star-rating';
+// import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,10 @@ import { NgImageSliderModule } from 'ng-image-slider';
     DashbordRoutingModule,
     CoreuiModule,
     NgImageSliderModule,
+    FontasModule,
+    NgxStarRatingModule,
+    NgbModule,
+
     
   ],
   exports : [

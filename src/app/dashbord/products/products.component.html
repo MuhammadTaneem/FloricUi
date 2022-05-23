@@ -6,17 +6,40 @@
         <p>Check & Get Your Desired Product !</p>
     </div>
     <c-row >
-        <c-col *ngFor="let product of products" class="mt-5" [routerLink]="['/dashbord','productdetails','{{product.id}}']">
+        <c-col *ngFor="let product of products" class="mt-5 box" [routerLink]="['/dashbord/productdetails/'+product.id ]">
             <c-card class="mb-3">
               <img cCardImg="top" [src]="product.product_img1">
-              <c-card-body>
-                <h5 cCardTitle>{{product.name}}</h5>
-                <p cCardText class="text-danger fw-semibold">
-                    {{product.price}}$
+              <c-card-body class="m-0 p-1">
+  
+                  
+                  <p cCardTitle class="lh-sm" cTooltip="{{product.name}}" 
+                   color="secondary">{{product.name.substring(0,90)}}</p>
+  
+                <p cCardText class="text-danger fw-semibold align-bottom">
+                  <span class="mrw">৳ </span>  {{product.price}}  
                 </p>
-           
               </c-card-body>
             </c-card>
+
+
           </c-col>
+          <c-pagination align="end" aria-label="Page navigation example">
+            <li cPageItem [disabled]="true">
+              <a cPageLink [routerLink]>Previous</a>
+            </li>
+            <li cPageItem>
+              <a cPageLink [routerLink]>1</a>
+            </li>
+            <li cPageItem>
+              <a cPageLink [routerLink]>2</a>
+            </li>
+            <li cPageItem>
+              <a cPageLink [routerLink]>3</a>
+            </li>
+            <li cPageItem>
+              <a cPageLink [routerLink]>Next</a>
+            </li>
+          </c-pagination>
     </c-row>
 </c-container>
+ 

@@ -1,3 +1,4 @@
+import { PdetailsResolver } from './pdetails.resolver';
 import { DashbordResolver } from './dashbord.resolver';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductsComponent } from './products/products.component';
@@ -19,13 +20,16 @@ const routes: Routes = [
   {
     path: 'products',
     component: ProductsComponent,
-      resolve: {
+    resolve: {
       data: DashbordResolver,
     },
   },
   {
     path: 'productdetails/:id',
-    component: ProductDetailsComponent
+    component: ProductDetailsComponent,
+    resolve: {
+      data: PdetailsResolver,
+    },
   },
 ];
 

@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
 
 
 
-  navlist =["Women's Fashion","men's Fashion", 'Health & Beauty','Electronic Devices','Home Appliances','Sports & Outdoor'];
+  // navlist =["Women's Fashion","men's Fashion", 'Health & Beauty','Electronic Devices','Home Appliances','Sports & Outdoor'];
   faCoffee = faCoffee;
   faUser =faUser;
   cart = faCartShopping;

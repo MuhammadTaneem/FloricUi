@@ -19,28 +19,63 @@
           <c-col class="m-5 p-0 align-items-start" md="5">
 
             <div class="m-5">
-                <h3 class="">name of product</h3>
-                <p>Brand: wxtsy</p>
-                <p>Model: safdsafdsa</p>
-                <P>Color: balck</P>
+                <h3 class="">{{product.name}}</h3>
+                <p>Brand: {{product.brand}}</p>
+                <p>Model: {{product.Model}}</p>
+                 <P>Color: {{product.color}}</P>
 
-                <button cButton color="success" class="avility" size="">Availabe</button>
-
-                <p class="price mt-5 ">200$</p>
+                <button cButton [color]="ab_color" class="avility" size="">{{ability}}</button>
+                <p class="price mt-5 ">   <span class="mrw">৳ </span>  {{product.price}}</p>
                 
             </div>
 
-            <div class="btn m-5">
-                <button cButton color="primary" size="lg">Primary</button>
-            <button cButton color="success" class="ms-5" size="lg">Success</button>
+            <div class="btn ms-5">
+                <button cButton color="info" size="lg">Add to cart </button>
+            <button cButton color="warning" class="ms-5" size="lg">Buy now</button>
 
             </div>
-
-            
-
-            
-            
             
           </c-col>
       </c-row>
+      <c-row class="">
+        <hr >
+        <h5>Product details of {{product.name}}</h5>
+        <p class="mt-3 pas "> {{product.description}} </p>
+        <h5 class="mt-3">Specifications of {{product.name}}</h5>
+        <div class="pas mt-3">
+          <p>Brand: {{product.brand}}</p>
+          <p>Model: {{product.Model}}</p>
+           <P>Color: {{product.color}}</P>
+           <p>weight: {{product.weight}}</p>
+           <p> Size: {{product.size}}</p>
+
+        </div>
+
+      </c-row>
+      <hr>
+      <c-row *ngFor="let item of ratting">
+
+        <c-card class="ratingbox">
+          <c-row >
+            <p>{{ item.name }}  ratted  {{item.star}} out of 5</p>
+            <ngb-rating [(rate)]="item.star" [readonly]="true" [max]="5">
+              <ng-template let-fill="fill" let-index="index">
+                <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3" >&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+            <span  *ngIf="item.comment">
+               &nbsp;<span>{{item.comment}}</span>
+            </span>
+            
+          </c-row>
+
+        </c-card>
+
+
+
+        
+       
+      </c-row>
+
+ 
   </c-container>

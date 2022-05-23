@@ -21,6 +21,7 @@ import {
   UtilitiesModule,
   OffcanvasModule,
   TooltipModule ,
+  PaginationModule,
 } from '@coreui/angular';
 
 
@@ -46,6 +47,7 @@ let arr = [
   UtilitiesModule,
   OffcanvasModule,
   TooltipModule ,
+  PaginationModule,
 ]
 
 @NgModule({

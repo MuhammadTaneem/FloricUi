@@ -9,8 +9,8 @@ import {AuthRoutingModule } from './auth-routing.module';
 import { AccountComponent } from './account/account.component';
 import { CoreuiModule } from '../coreui/coreui.module';
 import { AuthService } from './auth.service';
-
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,6 +27,8 @@ import { AuthService } from './auth.service';
     CommonModule,
     AuthRoutingModule,
     CoreuiModule,
+    FontAwesomeModule,
+    ReactiveFormsModule,
   ],
   exports:[
     CommonModule,

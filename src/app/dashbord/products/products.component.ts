@@ -46,5 +46,6 @@ export class ProductsComponent implements OnInit {
       // console.log(data.data.viewposts, data.data.count);
     });
   }
+  
 
 }

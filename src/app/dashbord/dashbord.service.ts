@@ -1,4 +1,4 @@
-import { Product } from './dashbord.model';
+import { Product, Ratting } from './dashbord.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
@@ -34,6 +34,8 @@ export class DashbordService {
     });
   }
 
+
+
   //   invoke_products(){
   //   this.http.get<{id: number,
   //     name : string,
@@ -60,6 +62,20 @@ export class DashbordService {
   //     this.BACKEND_URL+'products/list/'
   //   );
   // }
+
+
+  invoke_product_details(pk:string){
+    return this.http.get<Product>(
+      this.BACKEND_URL+'products/list/'+pk
+    );
+  }
+
+  invoke_product_ratting(pk:string){
+    const queryParams = `?id=${pk}`;
+    return this.http.get<Ratting>(
+      this.BACKEND_URL+'ratting/'+queryParams
+    );
+  }
 
   get_products(){
     return this.products.asObservable();

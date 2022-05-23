@@ -36,6 +36,7 @@ export class DashbordResolver implements Resolve<boolean> {
     //     console.log("printing from ------------"+products);
     //     return products;
     //   });
+    
 
       this.dashbordService.get_products().subscribe(products=>{
         resolve(products);
