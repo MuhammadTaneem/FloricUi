@@ -66,4 +66,6 @@ export class AuthService {
   forgetpass(email:string){}
   changePass(opass:string,pass1:string,pass2:string){}
   forgetPassConfirm(pass1:string,pass2:string){}
+  createUser(first_name: string,last_name: string,phone:number,date_of_birth:string ,gende: string, city: string, address: string ,email: string,password: string 
+  ){}
 }

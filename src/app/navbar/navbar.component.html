@@ -10,7 +10,7 @@
           <c-nav-item (click)="searchopen()" class="minisearchopen">
               <button cButton type="submit" color="light" variant="ghost" cTooltip="search" cTooltipPlacement="bottom"
                    class="me-1" >
-                <fa-icon [icon]="search"></fa-icon>     
+                <fa-icon [icon]="searchIcon"></fa-icon>     
               </button>
           </c-nav-item>
 
@@ -18,10 +18,11 @@
             <span class="searchbox">
               <div class="container-fluid">
                 <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button cButton type="submit" color="light" variant="ghost" cTooltip="search" cTooltipPlacement="bottom"
-                   class="me-1" >
-                <fa-icon [icon]="search"></fa-icon>     
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" #sr>
+                <button cButton type="submit" color="light" variant="ghost" cTooltip="search" cTooltipPlacement="bottom"
+                   class="me-1" [routerLink]="['/dashbord/products']"
+                   [queryParams]="{ s: sr.value }" >
+                <fa-icon [icon]="searchIcon"></fa-icon>     
               </button>
                 </form>
               </div>
@@ -59,13 +60,17 @@
       <nav class="navbar navbar-light bg-light">
         <form class="container-fluid">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="search" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="search" aria-describedby="basic-addon1" #search>
             <span class="input-group-text" id="basic-addon1">
     
-              <button cButton type="submit" color="dark" variant="ghost" cTooltip="search" cTooltipPlacement="bottom"
-              class="me-1" >
-           <fa-icon [icon]="search"></fa-icon>     
-         </button>
+              <button cButton type="button" color="dark" variant="ghost" cTooltip="search" cTooltipPlacement="bottom"
+              class="me-1" 
+              [routerLink]="['/dashbord/products']"
+              [queryParams]="{ s: search.value }"
+              >
+           <fa-icon [icon]="searchIcon"></fa-icon>     
+              </button>
+
     
             </span>
           </div>
@@ -112,8 +117,9 @@
 
           <a [routerLink]="['/auth']" cNavLink>{{item}}</a>
         </c-nav-item> -->
-        <c-nav-item >
-          <button cButton  color="dark" variant="ghost"  [routerLink]="['/order',]" >
+        <c-nav-item cOffcanvasToggle="OffcanvasStart">
+          <button cButton  color="dark" variant="ghost"  [routerLink]="['/dashbord/products']"
+          [queryParams]="{ s: item.name }" >
             {{item.name}}
              
           </button>

@@ -1,10 +1,26 @@
 <app-category></app-category>
 
 <c-container class="mt-5">
-    <div class="text-center">
+    <div class="text-center" *ngIf="products.length>0">
         <h2>Recomended Products</h2>
         <p>Check & Get Your Desired Product !</p>
     </div>
+
+    <div *ngIf="products.length==0" class="text-center">
+      <h3>Search No Result</h3>
+      <p>We're sorry. We cannot find any matches for your search term.
+      </p>
+  </div>
+
+    <!-- <c-row *ngIf="products.length==0" class="align-items-center">
+      <c-col >
+
+        <h3>Search No Result</h3>
+        <p>We're sorry. We cannot find any matches for your search term.
+        </p>
+
+      </c-col>
+    </c-row> -->
     <c-row >
         <c-col *ngFor="let product of products" class="mt-5 box" [routerLink]="['/dashbord/productdetails/'+product.id ]">
             <c-card class="mb-3">
@@ -23,7 +39,7 @@
 
 
           </c-col>
-          <c-pagination align="end" aria-label="Page navigation example">
+          <!-- <c-pagination align="end" aria-label="Page navigation example" (change)="onChangePage($event)" >
             <li cPageItem [disabled]="true">
               <a cPageLink [routerLink]>Previous</a>
             </li>
@@ -37,9 +53,19 @@
               <a cPageLink [routerLink]>3</a>
             </li>
             <li cPageItem>
-              <a cPageLink [routerLink]>Next</a>
+              <a cPageLink [routerLink] >Next</a>
             </li>
-          </c-pagination>
+          </c-pagination> -->
+
+            <mat-paginator
+              *ngIf="length"
+              [length]="length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              (page)="onChangePage($event)"
+            >
+            </mat-paginator>
+
     </c-row>
 </c-container>
  

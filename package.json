@@ -22,6 +22,7 @@
     "@angular/forms": "~13.3.0",
     "@angular/language-service": "~13.3.0",
     "@angular/localize": "~13.3.0",
+    "@angular/material": "^13.3.5",
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",

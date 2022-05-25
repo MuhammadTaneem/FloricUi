@@ -12,7 +12,8 @@
 
   <c-row class="">
     <c-col *ngFor="let item of navItems" class="mt-5">
-      <c-card >
+      <c-card [routerLink]="['/dashbord/products']"
+      [queryParams]="{ s: item.name }">
         <div class="text-center" >
           <img class="p-3" src="{{item.cat_img}}">
         </div>

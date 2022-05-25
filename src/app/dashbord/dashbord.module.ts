@@ -13,7 +13,7 @@ import { FontasModule } from '../fontawsome/fontawsome.module';
 import { NgxStarRatingModule } from 'ngx-star-rating';
 // import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
   declarations: [
     CategoryComponent,
@@ -28,6 +28,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FontasModule,
     NgxStarRatingModule,
     NgbModule,
+    MatPaginatorModule
 
     
   ],

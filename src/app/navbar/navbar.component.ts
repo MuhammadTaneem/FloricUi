@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   faCoffee = faCoffee;
   faUser =faUser;
   cart = faCartShopping;
-  search = faMagnifyingGlass;
+  searchIcon = faMagnifyingGlass;
   minisearch = 'none';
   // navItems :{id:number,name:string,cat_img:string}[] = [];
   navItems :Category | any= [] ;

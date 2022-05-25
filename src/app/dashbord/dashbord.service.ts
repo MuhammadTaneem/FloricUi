@@ -11,7 +11,10 @@ import { Subject } from 'rxjs';
 export class DashbordService {
 
   
-  products = new Subject<{product:Product}>();
+  // products = new Subject<{product:Product;count: number }>();
+  products = new Subject<{product:Product }>();
+
+
   // categories: Category[]=[]
 
 
@@ -25,14 +28,34 @@ export class DashbordService {
   BACKEND_URL = environment.apiUrl + 'api/';
 
 
-  invoke_products(){
+  invoke_products(
+    s: string='',
+    page: number=1,
+    page_size: number=30){
+    console.log(s,'asdfasdfdsaf');
+    const queryParams = `?search=${s}&page=${page}&page_size=${page_size}`;
     this.http.get<Product>(
-      this.BACKEND_URL+'products/list/'
+      this.BACKEND_URL+'products/list/'+ queryParams
     ).subscribe(productsData=>{
       this.products.next({product : productsData});
       console.log(productsData);
     });
   }
+
+  // invoke_products(
+  //   s: string = '',
+  //   page: number = 1,
+  //   page_size: number = 10,){
+  //   console.log(s,'asdfasdfdsaf');
+  //   const queryParams = `?search=${s}&page=${page}&page_size=${page_size}`;
+  //   this.http.get<{product:Product; results:any; count:number}>(
+  //     this.BACKEND_URL+'products/list/'+ queryParams
+  //   ).subscribe(productsData=>{
+  //     this.products.next({product : productsData.results, count:productsData.count});
+  //     console.log(productsData);
+  //   });
+  // }
+
 
 
 
