@@ -1,3 +1,5 @@
+import { ProfileResolver } from './profile.resolver';
+import { AuthGuard } from './auth.guard';
 import { AccountComponent } from './account/account.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -37,6 +39,10 @@ const routes: Routes = [
     {
       path: 'account',
       component: AccountComponent,
+      canActivate: [AuthGuard],
+      resolve: {
+      data: ProfileResolver,
+    },
     },
     
 

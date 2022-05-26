@@ -82,15 +82,13 @@
 
 
 
-
-
   <c-offcanvas class="mt-5"
+  [style.height.px]=navHeighit
 
-  
   placement="start"
   id="OffcanvasStart"
 >
-  <c-offcanvas-header class="mt-3">
+  <c-offcanvas-header class="mt-3" >
     <h5 cOffcanvasTitle
     cOffcanvasToggle="OffcanvasStart"> Floric</h5>
     <button
@@ -100,7 +98,7 @@
       aria-label="Close"
     ></button>
   </c-offcanvas-header>
-  <c-offcanvas-body>
+  <c-offcanvas-body >
     <!-- <c-nav class="flex-column"  *ngFor="let item of navlist">
 
         <c-nav-item >
@@ -111,16 +109,17 @@
       </c-nav-item>
       
       </c-nav> -->
-      <c-nav class="flex-column"  *ngFor="let item of navItems">
+      <c-nav class="flex-column"  *ngFor="let item of navItems" >
 
         <!-- <c-nav-item cOffcanvasToggle="OffcanvasStart">
 
           <a [routerLink]="['/auth']" cNavLink>{{item}}</a>
         </c-nav-item> -->
         <c-nav-item cOffcanvasToggle="OffcanvasStart">
-          <button cButton  color="dark" variant="ghost"  [routerLink]="['/dashbord/products']"
+          <button cButton  color="dark" class="wf text-start" variant="ghost"  [routerLink]="['/dashbord/products']"
           [queryParams]="{ s: item.name }" >
-            {{item.name}}
+          {{item.name}}
+            
              
           </button>
       </c-nav-item>

@@ -18,6 +18,7 @@ export class NavbarComponent implements OnInit {
   cart = faCartShopping;
   searchIcon = faMagnifyingGlass;
   minisearch = 'none';
+  navHeighit = window.innerHeight;
   // navItems :{id:number,name:string,cat_img:string}[] = [];
   navItems :Category | any= [] ;
 

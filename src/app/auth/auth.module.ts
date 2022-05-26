@@ -11,6 +11,7 @@ import { CoreuiModule } from '../coreui/coreui.module';
 import { AuthService } from './auth.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -29,10 +30,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     CoreuiModule,
     FontAwesomeModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
   ],
   exports:[
     CommonModule,
     AuthRoutingModule,
+    MatSnackBarModule,
 
 
   ],

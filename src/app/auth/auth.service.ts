@@ -1,7 +1,11 @@
+import { User } from './auth.model';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Subject } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +23,11 @@ export class AuthService {
   created = new Subject<boolean>();
   tokenTimeDuration = 60*60*24*30;
 
-  constructor(  
+  constructor(
     private http: HttpClient,
-    ) { }
+    private snacbar: MatSnackBar,
+    private router: Router
+  ) {}
 
   // login(email:string, pass:string){}
 
@@ -38,7 +44,7 @@ export class AuthService {
       .subscribe(
         (loginData) => {
           if (loginData.access) {
-            // this.snacbar.open('login success ', 'X', { duration: 2000 });
+            this.snacbar.open('login success ', 'X', { duration: 2000 });
 
             const now = new Date();
             const expirationDate = new Date(
@@ -49,8 +55,9 @@ export class AuthService {
             localStorage.setItem('token', loginData.access);
             // localStorage.setItem('uid', loginData.user.id);
             localStorage.setItem('expiration', expirationDate.toISOString());
+            this.loadId(loginData.access);
 
-            // this.loadMe(loginData.access);
+            // this.loadMe();
           }
         },
         (error) => {
@@ -58,9 +65,96 @@ export class AuthService {
           let err = JSON.stringify(error.error);
           err = err.split(':')[1];
           // err = err.slice(2, -4);
-          // this.snacbar.open(err, 'X');
+          this.snacbar.open(err, 'X');
         }
       );
+  }
+
+
+  // invokeMe(){
+  //   this.http.get<User>(this.BACKEND_URL+'user/me/').subscribe((myData)=>{
+  //     console.log(myData)
+  //   })
+  // }
+
+  loadId(access: string) {
+    const headers = new HttpHeaders().set('Authorization', `jwt ${access}`);
+    this.http
+      .get<{ id: string; email: string }>(this.BACKEND_URL + 'users/me/', {
+        headers: headers,
+      })
+      .subscribe((profileData) => {
+        localStorage.setItem('uid', profileData.id);
+        this.uid = profileData.id;
+        this.router.navigate(['/']);
+      });
+  }
+
+  getToken(){
+    return this.token;
+
+  }
+
+  getId(){
+    return this.uid;
+  }
+
+  authenticationStatus() {
+    return this.isAuthenticated;
+  }
+
+  haveTokenLisenter() {
+    return this.haveToken.asObservable();
+  }
+
+
+  autoAuthUser() {
+    const authInformation = this.getAuthData();
+    if (!authInformation) {
+      return;
+    }
+    const now = new Date();
+    const expiresIn = authInformation.expirationDate.getTime() - now.getTime();
+    if (expiresIn > 0) {
+      this.token = authInformation.token;
+      this.uid = authInformation.uid;
+      this.isAuthenticated = true;
+      this.haveToken.next(true);
+      // this.setAuthTimer(expiresIn / 1000);
+      this.setAuthTimer(expiresIn);
+    }
+  }
+
+  private setAuthTimer(duration: number) {
+    this.tokenTimer = setTimeout(() => {
+      this.logOut();
+    }, 3600 * 24 * 1000);
+  }
+
+  private getAuthData() {
+    const token = localStorage.getItem('token');
+    let expirationDate = localStorage.getItem('expiration');
+    const uid = localStorage.getItem('uid');
+
+    if (!token || !expirationDate) {
+      return false;
+    }
+    return {
+      token: token,
+      uid: uid,
+      expirationDate: new Date(expirationDate),
+    };
+  }
+
+  logOut() {
+    clearTimeout(this.tokenTimer);
+    this.isAuthenticated = false;
+    this.token = null;
+    this.uid = null;
+    localStorage.clear();
+    this.haveToken.next(false);
+    this.router.navigate(['/']);
+    this.snacbar.open('you are logged out  ', 'X', { duration: 2000 });
   }
 
   forgetpass(email:string){}

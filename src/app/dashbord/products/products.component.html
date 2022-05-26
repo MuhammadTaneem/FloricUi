@@ -1,4 +1,8 @@
-<app-category></app-category>
+<div class="" *ngIf="!hideCat">
+
+  <app-category></app-category>
+</div>
+
 
 <c-container class="mt-5">
     <div class="text-center" *ngIf="products.length>0">

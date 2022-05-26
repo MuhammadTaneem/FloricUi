@@ -1,6 +1,6 @@
 import { DashbordService } from './../dashbord.service';
 import { Product } from './../dashbord.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 @Component({
@@ -19,6 +19,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   pageSize = 30;
   pageSizeOptions = [20, 30, 50, 100];
   currentPage = 1;
+  hideCat= false;
 
   // products = [
   // {'name': 'cap', 'price':99, 'description':'loading'},
@@ -49,6 +50,28 @@ export class ProductsComponent implements OnInit, OnDestroy {
     ) { }
 
   ngOnInit(): void {
+    this.loadData();
+    this.isHideCat();
+  }
+
+  isHideCat(){
+    this.route.queryParamMap.subscribe((paramMap: ParamMap) => {
+      if (paramMap.has('s')) {
+        this.hideCat = true;
+        console.log(this.hideCat);
+      }
+      else{
+        this.hideCat = false;
+        console.log(this.hideCat);
+
+      }
+      
+    });
+
+  }
+
+
+  loadData(){
     this.productsSubscribe=
     this.postSubcribe = this.route.data.subscribe((data) => {
       this.products =  data['data'].product.results ;
@@ -58,8 +81,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
       // console.log(data.data.viewposts, data.data.count);
     });
 
-
-
     this.postSubcribe = this.dashbordService.get_products().subscribe(products=>{
       
       this.p = products.product;
@@ -67,6 +88,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
       this.length = this.p.count;
       console.log(this.p.count);
     })
+
   }
 
   onChangePage(pageData: PageEvent) {

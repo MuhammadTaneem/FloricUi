@@ -57,10 +57,12 @@
 
         <c-card class="ratingbox">
           <c-row >
-            <p>{{ item.name }}  ratted  {{item.star}} out of 5</p>
+            <p class="pb-2">{{ item.name }}  ratted  {{item.star}} out of 5</p>
             <ngb-rating [(rate)]="item.star" [readonly]="true" [max]="5">
               <ng-template let-fill="fill" let-index="index">
-                <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3" >&#9733;</span>
+                <!-- <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3" >&#9733;</span> -->
+                <span class="star" [class.filled]="fill === 100"  >&#9733;</span>
+
               </ng-template>
             </ngb-rating>
             <span  *ngIf="item.comment">

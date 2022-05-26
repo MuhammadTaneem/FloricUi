@@ -1,6 +1,19 @@
 c-offcanvas{
     width:15rem;
+    overflow: scroll; 
+
+    // scrollbar-width: thin;
 }
+
+
+
+
+::-webkit-scrollbar-thumb {
+    background: #999;
+    border: 0.4em solid var(--cui-body-bg, rgb(0, 0, 0));
+    border-radius: 100vw;
+}
+
 
 .header{
     background-color: rgb(5, 5, 7);
@@ -46,3 +59,13 @@ c-offcanvas{
 //       margin-bottom: 70px;
 //       z-index: 2;
 //   }
+
+.wf{
+    width: 100%;
+    
+}
+
+c-offcanvas::-webkit-scrollbar {
+        width: 1em;
+      }
+ 
