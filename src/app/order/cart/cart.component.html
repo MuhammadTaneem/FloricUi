@@ -3,18 +3,18 @@
 
   <c-container id="cont"  class="mt-5">
     <c-card>
-      <c-card-header>Your cart</c-card-header>
-      <ul cListGroup [flush]="false">
+      <c-card-header class="mb-3"> <h2 class="text-center pt-2">Your cart</h2> </c-card-header>
+      <ul cListGroup [flush]="false" *ngFor="let item of carts; let index=index">
         <li cListGroupItem>
           <c-row>
              <!-- name  -->
-            <c-col xs="3" sm="2">
-              <img cCardImg="top" src="./assets/cat.png">
+            <c-col xs="4" sm="3">
+              <img cCardImg="top" [src]="item.product_img">
             </c-col>
             <!-- details  -->
             <c-col>
               <p cCardText>
-                Some quick example <strong>text</strong> to build on the card title and make up the bulk of the card's content.
+                {{item.product_name}}
               </p>
             </c-col>
   
@@ -22,22 +22,22 @@
   
             <c-col  md="1" xs="2">
   
-              <p>{{subprice}}$</p>
+              <p>৳{{item.product_price}}</p>
   
             </c-col>
             <!-- quantity  -->
             <c-col xs="1">
               <c-row>
-                <button cButton  color="link" variant="outline" [routerLink]="['/order',]" (click)="incriment(1)"  >
+                <button cButton  color="link" variant="outline"  (click)="incriment(index)"  >
                   <fa-icon [icon]="plush"></fa-icon>
     
                 </button>
                 <button cButton  color="link" variant="outline"  >
       
-                  <p>{{quantity}}</p>
+                  <p>{{item.quantity}}</p>
           
                 </button>
-                <button cButton  color="link" variant="outline" [routerLink]="['/order',]" (click)="decriment(1)" >
+                <button cButton  color="link" variant="outline"  (click)="decriment(index)" >
       
                   <fa-icon [icon]="minus"></fa-icon>
                 </button>
@@ -70,7 +70,7 @@
         
         <li cListGroupItem class="align-self-end">
   
-          <h5>Total 1000$</h5>
+          <h5>Total {{price}} ৳</h5>
           
   
         </li>

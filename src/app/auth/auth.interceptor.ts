@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 export class AuthInterceptor implements HttpInterceptor {
 
   BACKEND_URL = environment.apiUrl;
+  
 
   constructor(private authService: AuthService) {}
 
@@ -26,18 +27,30 @@ export class AuthInterceptor implements HttpInterceptor {
     this.BACKEND_URL + 'auth/users/activation/',
     this.BACKEND_URL + 'auth/users/reset_password_confirm/',
     this.BACKEND_URL + 'api/products/list/',
+    this.BACKEND_URL + 'api/products/list/:id',
     this.BACKEND_URL + 'api/products/category/',
     this.BACKEND_URL + 'api/ratting/',
-
   ];
 
+  usedUrl:string[] =[
+    this.BACKEND_URL+'api/cart/',
+    this.BACKEND_URL+'api/profile/',
+    this.BACKEND_URL+'api/orders/',
+    this.BACKEND_URL+'auth/users/set_password/'
+    // this.BACKEND_URL+'api/ratting/',
+    // this.BACKEND_URL+'api/cart/',
+    // this.BACKEND_URL+'api/cart/',
+
+  ]
+
   isfree(url: string) {
-    for (let i = 0; i < this.freeurl.length; i++) {
-      if (url == this.freeurl[i]) {
-        return false;
+    let mainUrl = url.split('?')[0]
+    for (let i = 0; i < this.usedUrl.length; i++) {
+      if (mainUrl == this.usedUrl[i]) {
+        return true;
       }
     }
-    return true;
+    return false;
   }
 
   intercept(
@@ -47,11 +60,7 @@ export class AuthInterceptor implements HttpInterceptor {
     if (this.isfree(request.url)) {
       const authtoken = this.authService.getToken();
       request = request.clone({
-        // headers: request.headers.set('Authorization', 'Bearer ' + authtoken)
         setHeaders: {
-//           'Content-Type': 'application/json',
-          // 'Content-Type': 'multipart/form-data; boundary=12345',
-          // Accept: 'application/json'
           Authorization: `jwt ${authtoken}`,
         },
       });

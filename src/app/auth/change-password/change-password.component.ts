@@ -38,16 +38,35 @@ export class ChangePasswordComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  private from = {
+    current_password: '',
+    new_password: '',
+    re_new_password: '',
+  };
+
+  // ngOnInit(): void {}
   onSubmit() {
-    let opass = this.changePassForm.value['oldPassword'];
-    let pass1 = this.changePassForm.value['password1'];
-    let pass2 = this.changePassForm.value['password2'];
-
-    this.authService.changePass(opass, pass1, pass2);
-    console.log(opass, pass1, pass2);
+    this.from.current_password = this.changePassForm.value['oldPassword'];
+    this.from.new_password = this.changePassForm.value['password1'];
+    this.from.re_new_password = this.changePassForm.value['password2'];
+    this.authService.changePass(this.from);
     this.changePassForm.reset();
-    console.log(this.changePassForm);
+  }
 
+  // onSubmit() {
+  //   let opass = this.changePassForm.value['oldPassword'];
+  //   let pass1 = this.changePassForm.value['password1'];
+  //   let pass2 = this.changePassForm.value['password2'];
+
+  //   this.authService.changePass(opass, pass1, pass2);
+  //   console.log(opass, pass1, pass2);
+  //   this.changePassForm.reset();
+  //   console.log(this.changePassForm);
+
+  // }
+  onCencel(){
+    this.authService.backClicked();
+    // this.router.navigate([localStorage.getItem('redirectUrl')]);
   }
 
 }

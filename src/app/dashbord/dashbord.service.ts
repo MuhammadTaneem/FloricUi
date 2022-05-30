@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Subject } from 'rxjs';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,7 @@ export class DashbordService {
 
   constructor(  
       private http: HttpClient,
+      private snacbar: MatSnackBar,
       ) { }
 
 
@@ -101,6 +102,41 @@ export class DashbordService {
       this.BACKEND_URL+'ratting/'+queryParams
     );
   }
+
+  set_ratting(ratting_Data:any){
+    this.http.post<{}>(this.BACKEND_URL+'ratting/',ratting_Data).subscribe(
+      (HttpResponse) => {
+                this.snacbar.open('successfully ratted ', 'X', {
+                  duration: 2000,
+                });
+      },
+      (error) => {
+                let err = JSON.stringify(error.error);
+                err = err.split(':')[1];
+                err = err.slice(1, -4);
+                this.snacbar.open(err, 'X');
+              }
+    );
+  }
+
+  // changePass(form: any) {
+  //   this.http
+  //     .post<{}>(this.BACKEND_URL + 'users/set_password/', form)
+  //     .subscribe(
+  //       (HttpResponse) => {
+  //         this.snacbar.open('successfully changed your password ', 'X', {
+  //           duration: 2000,
+  //         });
+  //         this.router.navigate(['/']);
+  //       },
+  //       (error) => {
+  //         let err = JSON.stringify(error.error);
+  //         err = err.split(':')[1];
+  //         err = err.slice(1, -4);
+  //         this.snacbar.open(err, 'X');
+  //       }
+  //     );
+  // }
 
   get_products(){
     return this.products.asObservable();

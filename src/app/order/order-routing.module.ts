@@ -1,7 +1,9 @@
+import { CartResolver } from './cart.resolver';
 import { CartComponent } from './cart/cart.component';
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -12,6 +14,10 @@ const routes: Routes = [
   {
   path: 'cart',
   component: CartComponent,
+  canActivate: [AuthGuard],
+  resolve: {
+      data: CartResolver,
+    },
   },
 ];
 

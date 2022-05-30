@@ -3,12 +3,12 @@
                 <c-col  class="text-center mt-5">
                   <c-card class="mb-3">
                           <div class="imgblox">
-                                <img cCardImg="top" src="./assets/cat.png">
+                                <img cCardImg="top" src="{{user.image}}">
                           </div>
                     <c-card-body>
-                      <h5 cCardTitle>muhammad taneem</h5>
+                      <h5 cCardTitle>{{user.first_name}} {{user.last_name}}</h5>
                       <p cCardText>
-                        Email: muhammadtaneem.4@gmail.com
+                        Email: {{user.email}}
                       </p>
 
                     </c-card-body>
@@ -19,28 +19,83 @@
 
         <c-row>
                 <c-col>
-                        <c-nav variant="tabs">
-                                <a [active]="true" [cTabContent]="tabContent" [routerLink] [tabPaneIdx]="0" cNavLink> Profile</a>
-                                <a [cTabContent]="tabContent" [routerLink] [tabPaneIdx]="1" cNavLink>My Orders </a>
-                                <a [cTabContent]="tabContent" [routerLink] [tabPaneIdx]="2" cNavLink>Address</a>
-                              </c-nav>
-                              <c-tab-content #tabContent="cTabContent">
-                                <c-tab-pane class="p-3">
-                                  This is some placeholder content the <strong>Home</strong> tab's associated content. Clicking another tab
-                                  will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
-                                  content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.
-                                </c-tab-pane>
-                                <c-tab-pane class="p-3">
-                                  This is some placeholder content the <strong>Profile</strong> tab's associated content. Clicking another
-                                  tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
-                                  content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.
-                                </c-tab-pane>
-                                <c-tab-pane class="p-3">
-                                  This is some placeholder content the <strong>Contact</strong> tab's associated content. Clicking another
-                                  tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
-                                  content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.
-                                </c-tab-pane>
-                              </c-tab-content>
+                  <c-card class="text-capitalize fw-medium">
+                    <c-nav variant="tabs">
+                      <a [active]="true" [cTabContent]="tabContent" [tabPaneIdx]="0" cNavLink> Profile</a>
+                      <a [cTabContent]="tabContent" [tabPaneIdx]="1" cNavLink>My Orders </a>
+                      <a [cTabContent]="tabContent" [routerLink]="['/auth/change-password/' ]" [tabPaneIdx]="2" cNavLink>Change password</a>
+              </c-nav>
+                    <c-tab-content #tabContent="cTabContent">
+                      <c-tab-pane class="p-3">
+      
+                          <div class="bgc">
+                            <button cButton color="dark" variant="outline" class="float-end" >Edit profile</button> <br>
+                          </div>
+         
+                        
+
+                  
+
+                         <table borderless cTable hover>
+                          <tbody>
+
+
+
+                          <tr>
+                          <td>Gender</td>
+                          <td>: {{user.gender}}</td>
+                          </tr>
+
+
+                          <tr>
+                          <td>Phone</td>
+                          <td>: {{user.phone}}</td>
+                          </tr>
+
+                          <tr>
+                            <td>Date of Birth   &nbsp; &nbsp;</td>
+                            <td>: {{user.date_of_birth}}</td>
+                            </tr>
+
+                          <tr>
+                            <td>City</td>
+                            <td>: {{user.city}}</td>
+                          </tr>
+  
+  
+                          <tr>
+                            <td>Address</td>
+                            <td>: {{user.address}}</td>
+                           </tr>
+
+
+          
+                          </tbody>
+                          </table>
+                          
+                          
+                          
+
+
+
+
+                        
+
+                      </c-tab-pane>
+                      <c-tab-pane class="p-3">
+                        This is some placeholder content the <strong>Profile</strong> tab's associated content. Clicking another
+                        tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+                        content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.
+                      </c-tab-pane>
+                      <c-tab-pane class="p-3">
+                        <c-container>
+                         change password
+                        </c-container>
+                      </c-tab-pane>
+                    </c-tab-content>
+
+                  </c-card>
+                        
                 </c-col>
         </c-row>
               

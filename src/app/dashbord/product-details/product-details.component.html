@@ -28,14 +28,19 @@
                 <p class="price mt-5 ">   <span class="mrw">৳ </span>  {{product.price}}</p>
                   
             </div>
-
-            <div class="btn ">
-                <button cButton color="info" size="lg">Add to cart </button>
-            <button cButton color="warning" class="ms-5" size="lg">Buy now</button>
-
-            </div>
+            <div class="">
+              <button cButton color="info" size="lg">Add to cart </button>
+              <button cButton color="warning" class="ms-5" size="lg">Buy now</button>
+  
+          </div>
+           
             
           </c-col>
+          <!-- <div class="btn ">
+            <button cButton color="info" size="lg">Add to cart </button>
+            <button cButton color="warning" class="ms-5" size="lg">Buy now</button>
+
+        </div> -->
       </c-row>
       <c-row class="">
         <hr >
@@ -53,11 +58,53 @@
 
       </c-row>
       <hr>
+      <!-- ============================================================================================================================ -->
+
+      <!-- <c-accordion [alwaysOpen]="true">
+        <c-accordion-item #item0="cAccordionItem" [visible]="false">
+          <ng-template cTemplateId="accordionHeaderTemplate" #strbox>
+            <button (click)="item0.toggleItem()" [collapsed]="!item0.visible" cAccordionButton>
+              <p class="pb-2">give your ratting.</p>
+            <ngb-rating [rate]="0" [max]="5" #str id="str">
+              <ng-template let-fill="fill" let-index="index">
+                <span class="star" [class.filled]="fill === 100"  >&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+            </button>
+          </ng-template>
+          <ng-template cTemplateId="accordionBodyTemplate">
+            <div class="accordion-body">
+            <textarea class="form-control" id="ratComment" rows="3" #text_area></textarea> 
+            <button cButton color="dark" variant="outline"(click)="Onsubmit(str.rate,text_area.value)" >submit</button>
+            </div>
+          </ng-template>
+        </c-accordion-item>
+      </c-accordion> -->
+      <c-row>
+        <c-card class="ratingbox">
+          <c-row >
+            <p class="pb-2">give your ratting.</p>
+            <ngb-rating [rate]="0" [max]="5" #str (click)="rattingboxHide=!rattingboxHide">
+              <ng-template let-fill="fill" let-index="index">
+                <span class="star" [class.filled]="fill === 100"  >&#9733;</span>
+
+              </ng-template>
+            </ngb-rating>
+            <div *ngIf="rattingboxHide">
+              <textarea class="form-control" id="ratComment" rows="3" #text_area></textarea> 
+              <button cButton class="form-control" color="dark" variant="outline"(click)="Onsubmit(str.rate,text_area.value)" >submit</button>
+            </div>
+            
+          </c-row>
+        </c-card>     
+      </c-row>
+      <!-- ========================================================== -->
+      <hr>
       <c-row *ngFor="let item of ratting">
 
         <c-card class="ratingbox">
           <c-row >
-            <p class="pb-2">{{ item.name }}  ratted  {{item.star}} out of 5</p>
+            <p class="pb-2">{{ item.name }}  ratted  {{item.star}} /5</p>
             <ngb-rating [(rate)]="item.star" [readonly]="true" [max]="5">
               <ng-template let-fill="fill" let-index="index">
                 <!-- <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3" >&#9733;</span> -->

@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ProfileService {
 
-  BACKEND_URL = environment.apiUrl + 'api/profile/';
+  BACKEND_URL = environment.apiUrl + 'api/';
 
   constructor(
     private http: HttpClient,
@@ -22,7 +22,11 @@ export class ProfileService {
   getProfile(pid: number) {
     // let pdata;
     console.log(pid);
-    return this.http.get<{}>(this.BACKEND_URL + `?id=${pid}`);
+    return this.http.get<{}>(this.BACKEND_URL +'profile/'+ `?id=${pid}`);
+  }
+
+  getCarts() {
+    return this.http.get<{}>(this.BACKEND_URL +'cart/');
   }
 
   updateUser(uid: string, obj: any) {

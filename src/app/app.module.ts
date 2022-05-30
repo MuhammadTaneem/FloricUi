@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './auth/auth.interceptor';
 import { AppResolver } from './app.resolver';
 import { AppService } from './app.service';
 import { AuthService } from './auth/auth.service';
@@ -89,6 +90,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AuthService,
     AppService,
     AppResolver,
+    { 
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true },
     
   ],
   bootstrap: [AppComponent],

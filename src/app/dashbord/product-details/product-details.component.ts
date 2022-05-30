@@ -1,3 +1,4 @@
+import { DashbordService } from './../dashbord.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { faStar} from '@fortawesome/free-solid-svg-icons';
@@ -23,9 +24,13 @@ export class ProductDetailsComponent implements OnInit {
     ab_color = 'redangerd'
     stars:number[] = [0,0,0,0,0]
     rating = 4 ;
+    rattingboxHide:boolean = false;
     // out of stock 
 
-    constructor(private route: ActivatedRoute) { }
+    constructor(
+        private route: ActivatedRoute,
+        private dashbordService:DashbordService,
+        ) { }
 
     ngOnInit(): void {
         this.productsSubscribe=
@@ -68,6 +73,24 @@ export class ProductDetailsComponent implements OnInit {
         this.imageObject.push({image:this.product.product_img4, thumbImage: this.product.product_img4, title: ''});
     }
 
+    // Onsubmit(ratted_star:number,comment:string){
+    //     console.log(ratted_star,comment,this.product.id);
+
+    // }
+    private from = {
+        star:0,
+        product:0,
+        comment: '',
+        author:1
+      };
+    
+      // ngOnInit(): void {}
+      Onsubmit(ratted_star:number,comment:string){
+        this.from.star = ratted_star;
+        this.from.comment = comment;
+        this.from.product = this.product.id;
+        this.dashbordService.set_ratting(this.from);
+      }
 
 
 //   imageObject = [{

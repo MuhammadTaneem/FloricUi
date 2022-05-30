@@ -18,6 +18,11 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     this.authService.autoAuthUser();
+    this.authService.redirectUrl = state.url;
+    console.log('router accessss',state.url);
+    localStorage.setItem('redirectUrl',state.url);
+    console.log(this.authService.redirectUrl);
+    
     const isAuth = this.authService.authenticationStatus();
     if (!isAuth) {
       this.router.navigate(['/auth/login']);

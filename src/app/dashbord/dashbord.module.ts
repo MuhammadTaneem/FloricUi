@@ -14,6 +14,9 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
 // import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '../auth/auth.interceptor';
 @NgModule({
   declarations: [
     CategoryComponent,
@@ -28,6 +31,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     FontasModule,
     NgxStarRatingModule,
     NgbModule,
+    MatPaginatorModule,
     MatPaginatorModule
 
     
@@ -40,6 +44,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     // DashbordService,
     DashbordService,
     DashbordResolver,
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ]
 })
 export class DashbordModule { }
+
+

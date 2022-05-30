@@ -5,7 +5,7 @@ import { environment } from '../../environments/environment';
 import { Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-
+import {Location} from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -22,11 +22,13 @@ export class AuthService {
   Loading = new Subject<boolean>();
   created = new Subject<boolean>();
   tokenTimeDuration = 60*60*24*30;
+  redirectUrl :string| null= '';
 
   constructor(
     private http: HttpClient,
     private snacbar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private location: Location,
   ) {}
 
   // login(email:string, pass:string){}
@@ -86,7 +88,11 @@ export class AuthService {
       .subscribe((profileData) => {
         localStorage.setItem('uid', profileData.id);
         this.uid = profileData.id;
-        this.router.navigate(['/']);
+        // this.backClicked()
+        console.log(this.redirectUrl);
+        // this.redirectUrl = localStorage.getItem('redirectUrl');
+        console.log(localStorage.getItem('redirectUrl'))
+        this.router.navigate([localStorage.getItem('redirectUrl')]);
       });
   }
 
@@ -156,9 +162,30 @@ export class AuthService {
     this.router.navigate(['/']);
     this.snacbar.open('you are logged out  ', 'X', { duration: 2000 });
   }
+  backClicked() {
+    this.location.back();
+  }
 
   forgetpass(email:string){}
-  changePass(opass:string,pass1:string,pass2:string){}
+
+  changePass(form: any) {
+    this.http
+      .post<{}>(this.BACKEND_URL + 'users/set_password/', form)
+      .subscribe(
+        (HttpResponse) => {
+          this.snacbar.open('successfully changed your password ', 'X', {
+            duration: 2000,
+          });
+          this.router.navigate(['/']);
+        },
+        (error) => {
+          let err = JSON.stringify(error.error);
+          err = err.split(':')[1];
+          err = err.slice(1, -4);
+          this.snacbar.open(err, 'X');
+        }
+      );
+  }
   forgetPassConfirm(pass1:string,pass2:string){}
   createUser(first_name: string,last_name: string,phone:number,date_of_birth:string ,gende: string, city: string, address: string ,email: string,password: string 
   ){}

@@ -27,6 +27,7 @@ const routes: Routes = [
     {
       path: 'change-password',
       component: ChangePasswordComponent,
+      canActivate: [AuthGuard],
     },
     {
       path: 'confirm-password',
