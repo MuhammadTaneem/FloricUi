@@ -57,6 +57,7 @@ export class AuthService {
             localStorage.setItem('token', loginData.access);
             // localStorage.setItem('uid', loginData.user.id);
             localStorage.setItem('expiration', expirationDate.toISOString());
+            console.log(loginData.access);
             this.loadId(loginData.access);
 
             // this.loadMe();

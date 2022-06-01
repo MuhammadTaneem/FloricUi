@@ -20,8 +20,9 @@
                 <form class="d-flex">
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" #sr>
                 <button cButton type="submit" color="light" variant="ghost" cTooltip="search" cTooltipPlacement="bottom"
-                   class="me-1" [routerLink]="['/dashbord/products']"
-                   [queryParams]="{ s: sr.value }" >
+                   class="me-1"
+                   (click)="onSearch(sr.value)"
+                    >
                 <fa-icon [icon]="searchIcon"></fa-icon>     
               </button>
                 </form>

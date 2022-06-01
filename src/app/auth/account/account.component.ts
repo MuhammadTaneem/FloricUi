@@ -22,11 +22,16 @@ export class AccountComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+
+    this.loadAccount();
+
+  }
+  loadAccount(){
     this.userSubscribe = this.route.data.subscribe((data) => {
       this.user = data['data'][0];
       console.log(this.user);
     });
-    // this.uid = this.authService.getUid();
+
   }
 
   ngOnDestroy(): void {

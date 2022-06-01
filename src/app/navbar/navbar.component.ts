@@ -67,14 +67,20 @@ export class NavbarComponent implements OnInit {
   }
 
 
-
-
   searchopen(){
     if (this.minisearch === "none") {
       this.minisearch = "block";
     } else {
       this.minisearch = "none";
     }
+  }
+
+  onSearch(s:string){
+
+      // Pass along the hero id if available
+      // so that the HeroList component can select that item.
+      this.router.navigate(['dashbord/products/', { '?s': s }]);
+
   }
 
 }

@@ -2,9 +2,14 @@
 
 
   <c-container id="cont"  class="mt-5">
-    <c-card>
+
+
+    <c-card *ngIf="carts">
       <c-card-header class="mb-3"> <h2 class="text-center pt-2">Your cart</h2> </c-card-header>
-      <ul cListGroup [flush]="false" *ngFor="let item of carts; let index=index">
+  
+      <h5 *ngIf="carts.length < 1" class="text-center"> no item in your cart</h5>
+
+      <ul cListGroup [flush]="false" *ngFor="let item of carts; let index=index" >
         <li cListGroupItem>
           <c-row>
              <!-- name  -->
@@ -46,23 +51,10 @@
           </c-row>
         </li>
 
-
-
-
-        
-
-
-
-
-
-
-
-
-
       </ul>
   
       <!-- <c-card-header>Total 1256$</c-card-header> -->
-      <ul cListGroup [flush]="false" class="align-self-end">
+      <ul cListGroup [flush]="false" class="align-self-end" *ngIf="carts.length>0">
   
   
     

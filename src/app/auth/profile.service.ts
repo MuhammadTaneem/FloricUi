@@ -22,7 +22,7 @@ export class ProfileService {
   getProfile(pid: number) {
     // let pdata;
     console.log(pid);
-    return this.http.get<{}>(this.BACKEND_URL +'profile/'+ `?id=${pid}`);
+    return this.http.get<{}>(this.BACKEND_URL +'profile/'+ `?uid=${pid}`);
   }
 
   getCarts() {
@@ -31,6 +31,7 @@ export class ProfileService {
 
   updateUser(uid: string, obj: any) {
     const access = this.authService.getToken();
+    console.log(this.authService.getToken());
     const headers = new HttpHeaders().set('Authorization', `jwt ${access}`);
 
     this.http
